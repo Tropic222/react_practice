@@ -20,7 +20,7 @@ const [open, setOpen] = useState(false)
   return (
     <div className="App">
       <button onClick={() => setOpen(true)}>Открыть окно</button>
-      {open && <Modal open={open} setOpen={setOpen}/>} 
+      <Modal open={open} setOpen={setOpen}/>
     </div>
   );
 }
