@@ -61,8 +61,13 @@ function App() {
 
   return (
     <div className="App">
-      <Game step={step} onClickVariant={onClickVariant} question={question}/>
-      {/* <Result /> */}
+      {step != questions.length 
+      ? 
+        (<Game step={step} onClickVariant={onClickVariant} question={question}/>) 
+      : 
+        (      
+        <Result />
+        )}
     </div>
   );
 }
