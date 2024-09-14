@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Success } from './components/Success'
 import { Users } from './components/Users'
 import './index.scss'
 
@@ -8,6 +9,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [invites, setInvites] = useState([1, 3]);
   const [isLoading, setLoading] = useState(true);
+  const [success, setSucces] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
@@ -34,18 +36,23 @@ function App() {
       setInvites((prev) => [...prev, id]);
     }
   };
-
+  const onClickSendInvites = () => {
+    setSucces(true)
+  }
   return (
     <div className="App">
-      <Users
+      {
+        success ? <Success count={invites.length}/> : <Users
         onChangeSearchValue={onChangeSearchValue}
         searchValue={searchValue}
         items={users}
         isLoading={isLoading}
         invites={invites}
         onClickInvite={onClickInvite}
+        onClickSendInvites={onClickSendInvites}
       />
-      {/* <Success /> */}
+      }
+      
     </div>
   );
 }
