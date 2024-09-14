@@ -1,6 +1,8 @@
 import React from 'react'
+import iconMinus from '../../assets/minus.png'
+import iconPlus from '../../assets/plus.png'
 
-export const User = ({id, email, first_name, last_name, avatar}) => (
+export const User = ({ id, email, first_name, last_name, avatar, onClickInvite, isInvited }) => (
   <li>
     <div>
       <img className="avatar" src={avatar} alt="User" />
@@ -14,6 +16,6 @@ export const User = ({id, email, first_name, last_name, avatar}) => (
         </p>
       </div>
     </div>
-    <img className="action" src="https://img.icons8.com/?size=100&id=UBMhbvNpcoAM&format=png&color=000000" alt="Action" />
+    <img onClick={() => onClickInvite(id)} className="action" src={isInvited ?  iconMinus :  iconPlus} alt="Action" />
   </li>
 );
