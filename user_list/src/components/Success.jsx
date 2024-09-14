@@ -7,7 +7,7 @@ export const Success = ({ count }) => {
       <img src={success} alt="Success" />
       <h3>Успешно!</h3>
       <p>Всем {count} пользователям отправлено приглашение.</p>
-      <button className="send-invite-btn">Назад</button>
+      <button onClick={() => window.location.reload()} className="send-invite-btn">Назад</button>
     </div>
   );
 };
