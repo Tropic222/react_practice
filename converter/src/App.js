@@ -6,6 +6,8 @@ import './index.scss'
 function App() {
   const [fromCurrency, setFromCurrency] = useState('RUB')
   const [toCurrency, setToCurrency] = useState('USD')
+  const [fromPrice, setFromPrice] = useState(0)
+  const [toPrice, setToPrice] = useState(0)
   const [rates, setRates] = useState({})
   useEffect(()=> {
     const apiKey = process.env.REACT_APP_API_KEY;
@@ -23,10 +25,18 @@ function App() {
     })
      
   }, [])
+
+  const onChangeFromPrice = (value) => {
+    setFromPrice(value)
+  }
+
+  const onChangeToPrice = (value) => {
+    setToPrice(value)
+  }
   return (
     <div className="App">
-      <Block value={0} currency={fromCurrency} onChangeCurrency={setFromCurrency} />
-      <Block value={0} currency={toCurrency} onChangeCurrency={setToCurrency} />
+      <Block value={fromPrice} currency={fromCurrency} onChangeCurrency={setFromCurrency} onChangeValue={onChangeFromPrice} />
+      <Block value={toPrice} currency={toCurrency} onChangeCurrency={setToCurrency} onChangeValue={onChangeToPrice}/>
     </div>
   );
 }
